@@ -25,6 +25,7 @@
         <property name="connection.password">
             06dmysql
         </property>
+        <property name="hibernate.current_session_context_class">thread</property>
         <!--这里配置自动生成表结构(也可以手动生成表结构)-->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <!--注册映射文件-->
