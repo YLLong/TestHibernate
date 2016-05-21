@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.uiyllong.beans.Student" table="Student">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="snumber" type="java.lang.String"/>
+        <property name="sname" type="java.lang.String"/>
+        <property name="sage" type="java.lang.Integer"/>
+        <set name="courses" table="stu_cour" lazy="true" cascade="all">
+            <key column="SID"></key>
+            <many-to-many class="com.uiyllong.beans.Course" column="CID"/>
+        </set>
+    </class>
+
+</hibernate-mapping>

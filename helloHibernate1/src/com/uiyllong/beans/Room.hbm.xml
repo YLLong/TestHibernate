@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.uiyllong.beans.Room" table="Room">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="native"/>
+        </id>
+        <property name="address" type="java.lang.String"/>
+        <!--一对一时需要下面的one-to-one,多对一时不需要-->
+        <!--<one-to-one name="person" class="com.uiyllong.beans.Person" property-ref="room"/>-->
+
+        <!-- 一对多的配置 -->
+        <set name="person" table="Person" cascade="all" inverse="false">
+            <key column="room_id"></key>
+            <one-to-many class="com.uiyllong.beans.Person"/>
+        </set>
+    </class>
+</hibernate-mapping>
